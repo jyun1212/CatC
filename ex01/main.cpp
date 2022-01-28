@@ -3,11 +3,13 @@
 
 int main(void)
 {
-	int a = 15, b = 20;
-
-	printf_s("a=15\nb=20\n");
+	int a, b;
+	printf_s("a,b‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B\n");
+	scanf_s("%d %d", &a, &b);
+	printf_s("a=%d b=%d\n", a, b);
 	printf_s("a+b=%d\n", a + b);
 	printf_s("‰½‚©ƒL[‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢\n");
+	
 	_getch();
 	printf_s("End");
 	return 0;
