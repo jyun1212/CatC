@@ -3,17 +3,12 @@
 
 int main(void)
 {
-	char a, b, c;
-	a = 'a';
-	b = 'B';
-	c = '6';
+	const char* str = "This is a pen.";
 
-	printf_s("aには、文字%cが入っています。\n", a);
-	printf_s("bには、文字%cが入っています。\n", b);
-	printf_s("cには、文字%cが入っています。\n", c);
-	printf_s("aには、数字%dが入っています。\n", a);
-	printf_s("bには、数字%dが入っています。\n", b);
-	printf_s("cには、数字%dが入っています。\n", c);
+	printf_s("%s\n", str);
+	printf_s(str);
+	puts("\n");
+	printf_s("2番目の文字は、%cです。\n", str[1]);
 
 	printf_s("何かキーを押してください\n");
 	_getch();
