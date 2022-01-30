@@ -3,17 +3,19 @@
 
 int main(void)
 {
-	int a, b;
-	int *p, *q;
-	p = &a;
-	q = &b;
+	char a, b, c;
+	a = 'a';
+	b = 'B';
+	c = '6';
 
-	printf_s("a,bを入力してください。\n");
-	scanf_s("%d %d", p, q);
-	printf_s("a=%d b=%d\n", *p, *q);
-	printf_s("a+b=%d\n", *p + *q);
+	printf_s("aには、文字%cが入っています。\n", a);
+	printf_s("bには、文字%cが入っています。\n", b);
+	printf_s("cには、文字%cが入っています。\n", c);
+	printf_s("aには、数字%dが入っています。\n", a);
+	printf_s("bには、数字%dが入っています。\n", b);
+	printf_s("cには、数字%dが入っています。\n", c);
+
 	printf_s("何かキーを押してください\n");
-	
 	_getch();
 	printf_s("End");
 	return 0;
