@@ -1,17 +1,24 @@
 #include<stdio.h>
 #include<conio.h>
 
+int input_isbn(void);
+
 int main(void)
 {
-	const char* str = "This is a pen.";
-
-	printf_s("%s\n", str);
-	printf_s(str);
-	puts("\n");
-	printf_s("2番目の文字は、%cです。\n", str[1]);
+	input_isbn();
 
 	printf_s("何かキーを押してください\n");
 	_getch();
 	printf_s("End");
+	return 0;
+}
+
+int input_isbn(void)
+{
+	char isbn[64];
+
+	printf_s("ISBNを入力してください。\n");
+	scanf_s("%s", isbn, 64);
+	printf_s("入力された番号は、%sです。\n", isbn);
 	return 0;
 }
