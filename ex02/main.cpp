@@ -2,8 +2,8 @@
 
 int main()
 {
-	int a;
-	a = a + 3;
+	int a = 2;
+	a += 3;
 	printf_s("a=%d\n", a);
 	return 0;
 }
