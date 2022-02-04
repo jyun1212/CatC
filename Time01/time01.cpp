@@ -3,13 +3,20 @@
 int main()
 {
 	int i,j;	//iterator
-	
+	int count_border = 0;
+
 	for (i = 1; i <= 9; i++)
 	{
 		printf_s("%2d ", i);	//%2d‚Åi‚ª2Œ…•\¦
+		count_border += 3;
 	}
 	printf_s("\n");
-	printf_s("---------------------------\n");
+
+	for (i = 1; i <= count_border; i++)
+	{
+		printf_s("-");
+	}
+	printf_s("\n");
 
 	for (i = 1; i <= 9; i++)
 	{
