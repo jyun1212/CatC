@@ -1,19 +1,26 @@
 #include<stdio.h>
-#include<time.h>
 
-void main()
+int main()
 {
-	int i = 1;		//iterator
-	time_t t1, t2;
-	time(&t1);		//t1‚É•\¦‘O‚Ì•b”(1970/1/1~Œ»İ)‚ğŠi”[
+	int i,j;	//iterator
 	
-	while (i <= 5000)
-	{//5000‚Ü‚Å
-		printf_s("%d,", i++);
+	for (i = 1; i <= 9; i++)
+	{
+		printf_s("%2d ", i);	//%2d‚Åi‚ª2Œ…•\¦
 	}
-	time(&t2);		//t2‚É•\¦Œã‚Ì•b”‚ğŠi”[
-	printf_s("\ntime1=%ld time2=%ld\n", t1, t2);
-	printf_s("‚©‚©‚Á‚½ŠÔ‚ÍA%d•b‚Å‚·B\n", t2 - t1);
-	return;
+	printf_s("\n");
+	printf_s("---------------------------\n");
 
+	for (i = 1; i <= 9; i++)
+	{
+		for (j = 1; j <= 9; j++)
+		{
+			printf_s("%2d ", i * j);
+			if (j == 9)
+			{//‰üs
+				printf_s("\n");
+			}
+		}
+	}
+	return 0;
 }
