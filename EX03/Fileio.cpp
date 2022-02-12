@@ -1,49 +1,19 @@
+//cmd実行テスト用
+//VisualStudioからデバッグ実行しても得たい結果は得られない
+//コマンド「>ファイル名 abc def /?」
+
 #include<stdio.h>
-#include<process.h>
-#include<stdlib.h>
-#include<locale.h>
 
-int main()
+int main(int argc, char* argv[])
 {
-	FILE* fp;
-	errno_t error;
-	char str[1024];
-	str[sizeof(str) - 1] = '\0';
-
-	//ファイルを開く
-	error = fopen_s(&fp,"myfile.txt", "a");
-
-	if (error != 0)
-	{//失敗したら中止
-		printf_s("ファイルのオープンに失敗しました。\n");
-		exit(-1);
-	}
-
-	printf_s("ファイルに追加するテキストを入力してください。\n");
-	printf_s("Eと入力すると終了です。\n");
-
-	//UTF-8文字化け対策
-	setlocale(LC_CTYPE, ".65001");
-
-	while (1)
+	int i;
+	printf_s("\n");
+	printf_s("argc は%dです。\n", argc);
+	printf_s("次に、argv[x]の中身を示します。\n");
+	for (i = 0; i < argc; i++)
 	{
-		
-		scanf_s("%s", str, 1024);		//ファイルに追加する文章の入力
-		if (str[0] == 'E')
-		{//1文字目がEならループ脱出
-			break;
-		}
-
-		fprintf_s(fp, "%s", str);		//ファイルに書き込み
-		fprintf_s(fp, "%c", '\n');		//見やすくするために改行を書き込む
-		printf_s("ファイルにテキストを追加しました。\n");
-
+		printf_s("argv[%d]=%s\n", i, argv[i]);
 	}
-
-	//ファイルを閉じる
-	fclose(fp);
-
-	system("type myfile.txt");
-
+	printf_s("このように、argv[0]には、このプログラム自身の名前が入ります。\n");
 	return 0;
 }
