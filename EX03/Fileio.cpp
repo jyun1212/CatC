@@ -1,19 +1,62 @@
-//cmd実行テスト用
-//VisualStudioからデバッグ実行しても得たい結果は得られない
-//コマンド「>ファイル名 abc def /?」
-
 #include<stdio.h>
+#include<string.h>
+#include<locale.h>
+
+int file_read(FILE*);
 
 int main(int argc, char* argv[])
 {
-	int i;
-	printf_s("\n");
-	printf_s("argc は%dです。\n", argc);
-	printf_s("次に、argv[x]の中身を示します。\n");
-	for (i = 0; i < argc; i++)
+	FILE* fp;
+	errno_t error;
+
+	char fname[64];
+	fname[sizeof(fname) - 1] = '\0';
+	
+
+	if (argc == 1)
 	{
-		printf_s("argv[%d]=%s\n", i, argv[i]);
+		printf_s("コマンドラインからファイル名を入力できます！\n");
+		printf_s("ファイル名=");
+		scanf_s("%s", fname,64);
 	}
-	printf_s("このように、argv[0]には、このプログラム自身の名前が入ります。\n");
+	else
+	{
+		strcpy_s(fname, argv[1]);
+	}
+
+	while (1)
+	{
+		error = fopen_s(&fp,fname,"r");
+
+		if (error != NULL)
+		{
+			printf_s("ファイル名が不当です\n");
+			printf_s("ファイル名=");
+			scanf_s("%s", fname, 64);
+		}
+		else
+		{
+			break;
+		}
+	}
+
+	file_read(fp);
+
+	if (fp != 0) {
+	fclose(fp);
+	}
+
+	return 0;
+}
+
+int file_read(FILE* f)
+{
+	int ch;
+
+	setlocale(LC_CTYPE, ".65001");
+	while ((ch = getc(f)) != EOF)
+	{
+		putc(ch, stdout);
+	}
 	return 0;
 }
