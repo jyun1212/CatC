@@ -1,29 +1,41 @@
-//間違ったプログラム
-
 #include<stdio.h>
-int sumPrice(int, int, int);
+
+float calcPrice(float, float);
 
 int main()
 {
-	int price;		//金額(kingaku)
-	int tax;		//消費税(zeiritsu)
-	int sumprice;	//定価(nedam)
+	float price;		//金額(kingaku)
+	float tax;			//消費税(zeiritsu)
+	float sumprice;		//定価(nedam)
 
-	printf_s("金額を入力してください = ");
-	scanf_s("%d", &price);
+	printf_s("金額に0を入力すると終了します。");
 
-	printf_s("\n消費税率を入力してください(%%) = ");
-	scanf_s("%d", &tax);
-	
-	sumPrice(price, tax, sumprice);
-	printf_s("%dに%d%の消費税を加えると%d円になる\n", price, tax, sumprice);
+	while (1)
+	{
+		printf_s("金額を入力してください = ");
+		scanf_s("%f", &price);
+		if (price == 0.0)
+		{//金額が0ならループ終了
+			break;
+		}
+
+		printf("消費税を入力してください(%%) = ");
+		scanf_s("%f", &tax);
+
+		sumprice = calcPrice(price, tax);
+		//6桁小数点以下なし
+		//マイナスは左詰め表示
+		//下のprintfのエラーが取れなかった
+		printf_s("%-6.0f円に%-2.0%の消費税を加えると%-6.0f円になる。\n", price, tax, sumprice);
+	}
 
 	return 0;
 }
 
 
-int sumPrice(int price, int tax, int sumprice)
+float calcPrice(float a, float b)
 {
-	sumprice = price * (1 + tax / 100);
-	return 0;
+	float c;
+	c = a * (1 + b / 100);
+	return c;
 }
