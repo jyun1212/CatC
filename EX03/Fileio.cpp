@@ -1,12 +1,12 @@
 #include<stdio.h>
 
-int calcPrice(float, float,float *);
+int calcPrice(float, float);
 
+	float sumprice;		//定価(nedam)
 int main()
 {
 	float price;		//金額(kingaku)
 	float tax;			//消費税(zeiritsu)
-	float sumprice;		//定価(nedam)
 
 	printf_s("金額に0を入力すると終了します。\n");
 
@@ -23,7 +23,7 @@ int main()
 		printf("消費税を入力してください(%%) = ");
 		scanf_s("%f", &tax);
 
-		calcPrice(price, tax, &sumprice);
+		calcPrice(price, tax);
 
 		//6桁小数点以下なし
 		//マイナスは左詰め表示
@@ -35,8 +35,8 @@ int main()
 }
 
 
-int calcPrice(float a, float b, float* c)
+int calcPrice(float a, float b)
 {
-	*c = a * (1 + b / 100);
+	sumprice = a * (1 + b / 100);
 	return 0;
 }
