@@ -23,10 +23,11 @@ int main()
 		scanf_s("%f", &tax);
 
 		sumprice = calcPrice(price, tax);
+
 		//6桁小数点以下なし
 		//マイナスは左詰め表示
-		//下のprintfのエラーが取れなかった
-		printf_s("%-6.0f円に%-2.0%の消費税を加えると%-6.0f円になる。\n", price, tax, sumprice);
+		//						↓ここのfを書き忘れていた
+		printf_s("%-6.0f円に%-2.0f%%の消費税を加えると%-6.0f円になる。\n", price, tax, sumprice);
 	}
 
 	return 0;
