@@ -2,16 +2,16 @@
 
 int main()
 {
-	int i;
+	static char s[] = "ABCDE";
+	char* ptr;
 
-	for (i = 65; i <= 122; i++)
-	{//putcharにより整数からアスキーコードを参照し文字出力
-		putchar(i);
-		putchar(',');
-
-		if ((i - 64) % 10 == 0)
-		{//10文字で改行
-			putchar('\n');
+	ptr = s;	//s[0]のアドレスをptrに代入
+	while (1)
+	{
+		putchar(*ptr++);
+		if (*ptr == '\0')
+		{
+			break;
 		}
 	}
 
