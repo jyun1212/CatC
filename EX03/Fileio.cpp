@@ -2,18 +2,13 @@
 
 int main()
 {
-	static char s[] = "ABCDE";
-	char* ptr;
+	static char* str = (char*)"ABCDE";
+	int i;
 
-	ptr = s;	//s[0]のアドレスをptrに代入
-	while (1)
+	for (i = 0; i <= 4; i++)
 	{
-		putchar(*ptr++);
-		if (*ptr == '\0')
-		{
-			break;
-		}
+		printf_s("配列の%d番目の要素は'%c'です。\n", i + 1, str[i]);
 	}
-
+	
 	return 0;
 }
