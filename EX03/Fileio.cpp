@@ -1,14 +1,25 @@
 #include<stdio.h>
+#include<time.h>
+#include<Time.h>
 
 int main()
 {
-	static char* str = (char*)"ABCDE";
-	int i;
+	time_t present_tm;	//longと考えて良い
+	struct tm *my_time;	//tm構造体へのポインタ
+	char* now_time;
 
-	for (i = 0; i <= 4; i++)
+	errno_t error;
+	error = localtime_s(&now_time, &present_tm);
+
+	if (error != 0)
 	{
-		printf_s("配列の%d番目の要素は'%c'です。\n", i + 1, str[i]);
+		time(&present_tm);	//経過時間取得
+		my_time = localtime_s(&now_time, &present_tm);
+
+		printf_s("%d %d %d %d %d %d %d",
+			now_time.tm_year, now_time.tm_mon, now_time.tm_mday,
+			now_time.tm_hour, now_time.tm_min, now_time.tm_sec);
 	}
-	
+
 	return 0;
 }
