@@ -1,22 +1,23 @@
-#include <time.h>
-#include <stdio.h>
+#include<stdio.h>
 
-struct tm newtime;
-time_t aclock;
-
-int main(void)
+int main()
 {
-    char buffer[32];
-    errno_t errNum;
-    time(&aclock);   // Get time in seconds.
-    localtime_s(&newtime, &aclock);   // Convert time to struct tm form.
+	printf_s("\x1b[4;31m");
+	printf_s("どうです色が変わってアンダーラインもついたでしょう！\n");
+	
+	printf_s("\x1b[7;32m");
+	printf_s("今度は反転です。\n");
+	
+	putchar(0x1b);
+	
+	printf_s("[0;36m");
+	printf_s("今度は水色です\n");
 
-    // Print local time as a string.
+	printf_s("%c%s今度は緑\n", 0x1b, "[32m");
+	printf_s("%c%s%s\n", 0x1b, "[1;35m", "こんな書き方もあります\n");
+	
+	printf_s("\x1b[0m");
 
-    errNum = asctime_s(buffer, 32, &newtime);
-    if (errNum != 1)
-    {
-        printf("Current date and time: %s", buffer);  
-    }
-    return 0;
+	return 0;
+
 }
